@@ -12,7 +12,8 @@ $success_page = 'success.html';
 $tokens = array(
 	'd41d8cd98f00b204e9800998ecf8427e' => array(
 		'website' => 'test website',
-		'recipient' => 'user@host.com'
+		'recipient' => 'user@host.com',
+		'spam-filter' => 'phonenumber'
 	),
 	'a41d8cd98f00b204e9800998ecf8427e' => array(
 		'website' => 'test website',
@@ -50,6 +51,8 @@ foreach ($tokens as $token => $data) {
 	if ($token == $_GET['token']) {
 		$website = $data['website'];
 		$recipient = $data['recipient'];
+		if (array_key_exists('spam-filter', $data))
+			$spam_filter = $data['spam-filter'];
 		$token_found = true;
 		break;
 	}
@@ -60,6 +63,11 @@ if (!$token_found)
 //Check token's configuration
 if (empty($website) || empty($recipient))
 	die('Missing configuration, please check configuration file.');
+
+//Check anti-spam hidden fields
+if (!empty($spam_filter))
+	if (!empty($_GET[$spam_filter]))
+		die('die.');
 
 //Construct message
 if (empty($_GET['sender']))
