@@ -3,7 +3,7 @@
 //=============
 
 //Here goes your email username
-$emailform_sender = 'mailordie';
+$mailordie_sender = 'mailordie';
 
 //And here goes an URL to the success page
 $success_page = 'success.html';
