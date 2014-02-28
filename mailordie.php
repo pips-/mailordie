@@ -2,13 +2,14 @@
 //Configuration
 //=============
 
-//Here goes your email username
+//Define sender of the email.
 $mailordie_sender = 'mailordie';
 
-//And here goes an URL to the success page
+//Define URL to the success page.
 $success_page = 'success.html';
 
-//specify tokens here
+//Define tokens here.
+//If the spam-filter is non-empty, the request will be considered as spam
 $tokens = array(
 	'd41d8cd98f00b204e9800998ecf8427e' => array(
 		'website' => 'test website',
