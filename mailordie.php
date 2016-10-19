@@ -74,7 +74,7 @@ if (!empty($spam_filter))
 if (empty($_GET['sender']))
 	$sender = 'Anonymous';
 else
-	$sender = trim($_GET['sender']);
+	$sender = filter_input(INPUT_GET, 'sender', FILTER_SANITIZE_EMAIL);
 if (empty($_GET['subject']))
 	$subject = 'No subject';
 else
