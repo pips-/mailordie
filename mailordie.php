@@ -78,7 +78,7 @@ else
 if (empty($_GET['subject']))
 	$subject = 'No subject';
 else
-	$subject = clean_string($_GET['subject']);
+	$subject = filter_input(INPUT_GET, 'subject', FILTER_SANITIZE_STRING);
 $message = "The following message was sent from mailordie:\r\n";
 foreach ($_GET as $key => $val)
 	$message .= ucwords($key) . ': ' . clean_string($val) . "\r\n";
